@@ -10,26 +10,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14.x
         cache: 'npm'
     - run: npm ci
     - name: Set Env Vars
       env:
         ENVKEY: ${{ secrets.ENVKEY }}
       run: |
-        export ENVKEY=$ENVKEY
         curl -s https://raw.githubusercontent.com/envkey/envkey-source/master/install.sh | bash
-        eval $(envkey-source)
+        eval $(envkey-source $ENVKEY)
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
