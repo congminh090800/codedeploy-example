@@ -26,7 +26,6 @@ jobs:
         export ENVKEY=$ENVKEY
         curl -s https://raw.githubusercontent.com/envkey/envkey-source/master/install.sh | bash
         eval $(envkey-source)
-        printenv
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:

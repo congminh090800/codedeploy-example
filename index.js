@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get("/", (req, res, next) => {
-    res.json(process.env.SECRET);
+    res.json({environment: process.env.SECRET});
 })
 
 app.listen(process.env.PORT, () => {
