@@ -35,9 +35,9 @@ jobs:
     - name: Deploy to Aws EC2
       run: |
         aws deploy create-deployment \
-        --application-name codedeploy-example \
+        --application-name codedeploy-example-as-app \
         --deployment-config-name CodeDeployDefault.OneAtATime \
-        --deployment-group-name codedeploy-example-depgrp \
+        --deployment-group-name codedeploy-example-as-depgrp \
         --description "Push to main auto deploy" \
         --github-location repository=$GITHUB_REPOSITORY,commitId=$GITHUB_SHA
         
