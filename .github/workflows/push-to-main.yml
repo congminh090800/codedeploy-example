@@ -12,20 +12,7 @@ jobs:
     environment: development
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-        cache: 'npm'
-    - run: npm ci
-    - name: Set Env Vars
-      env:
-        ENVKEY: ${{ secrets.ENVKEY }}
-      run: |
-        export ENVKEY=$ENVKEY
-        curl -s https://raw.githubusercontent.com/envkey/envkey-source/master/install.sh | bash
-        eval $(envkey-source)
+    - uses: actions/checkout@v2x
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
