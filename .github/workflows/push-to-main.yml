@@ -12,7 +12,7 @@ jobs:
     environment: development
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2x
+    - uses: actions/checkout@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -22,9 +22,9 @@ jobs:
     - name: Deploy to Aws EC2
       run: |
         aws deploy create-deployment \
-        --application-name codedeploy-example-as-app \
+        --application-name codedeploy-example-app \
         --deployment-config-name CodeDeployDefault.OneAtATime \
-        --deployment-group-name codedeploy-example-as-depgrp \
+        --deployment-group-name codedeploy_example-depgrp \
         --description "Push to main auto deploy" \
         --github-location repository=$GITHUB_REPOSITORY,commitId=$GITHUB_SHA
         
