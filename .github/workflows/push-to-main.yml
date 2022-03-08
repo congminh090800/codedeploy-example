@@ -24,7 +24,7 @@ jobs:
         aws deploy create-deployment \
         --application-name codedeploy-example-app \
         --deployment-config-name CodeDeployDefault.OneAtATime \
-        --deployment-group-name codedeploy-example-depgrp \
+        --deployment-group-name codedeploy-example-depgrp2 \
         --description "Push to main auto deploy" \
         --github-location repository=$GITHUB_REPOSITORY,commitId=$GITHUB_SHA
         
